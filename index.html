@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #a10a6a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        video-container {
+            position: relative;
+            width: 25%; /* Adjust the width as needed */
+            height: 12%; /* Adjust the height as needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        media {
+            width: 100%;
+            height: 100%;
+            display: none; /* Initially hide the media element */
+        }
+
+        overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        button-group {
+            display: flex;
+            flex-direction: row; /* Adjusted to row for horizontal alignment */
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px; /* Added spacing between the video and buttons */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<video-container>
+    <media-container>
+        <video controls id="video">
+            <source src="./img-9759_H4OXQ3Si.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img id="image" src="./20230715_195257.jpg" alt="Your Image" style="width: 640px; height: 360px; visibility: hidden;">
+    </media-container>
+    <overlay>
+        <h1>Is my girl sweet?</h1>
+        <button-group>
+            <button id="YesButton" onclick="handleYes()">Yes</button>
+            <button onclick="handleNo()" id="NoButton">No</button>
+        </button-group>
+    </overlay>
+</video-container>
+
+<script>
+    function handleNo() {
+        const NoButton = document.getElementById("NoButton");
+
+        // Get button dimensions
+        const buttonWidth = NoButton.clientWidth;
+        const buttonHeight = NoButton.clientHeight;
+
+        // Calculate random coordinates for the button position within the visible area
+        const randomX = Math.floor(Math.random() * (window.innerWidth - buttonWidth));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - buttonHeight));
+
+        // Set the button's new position
+        NoButton.style.position = "absolute";
+        NoButton.style.left = randomX + "px";
+        NoButton.style.top = randomY + "px";
+        alert("Не говори глупости)")
+    }
+
+    function handleYes() {
+        // Hide the video
+        const video = document.getElementById("video");
+        video.style.display = "none";
+
+        // Show the image
+        const image = document.getElementById("image");
+        image.style.display = "block";
+        image.style.visibility = 'visible';
+    }
+</script>
+</body>
+</html>
